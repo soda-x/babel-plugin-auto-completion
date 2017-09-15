@@ -1,0 +1,67 @@
+{
+  "name": "babel-plugin-auto-completion",
+  "version": "0.1.0",
+  "description": "Modularly import plugin for babel. Edit",
+  "main": "./lib/index.js",
+  "scripts": {
+    "ci": "nyc report --reporter=text-lcov | coveralls",
+    "pretest": "eslint --ignore-path .gitignore src",
+    "test": "nyc --reporter=lcov --reporter=text ava",
+    "release": "babel src --out-dir lib",
+    "prepublish": "npm run test && npm run release"
+  },
+  "ava": {
+    "files": [
+      "src/__tests__/**/*.js"
+    ],
+    "concurrency": 5,
+    "require": "babel-register",
+    "babel": "inherit"
+  },
+  "nyc": {
+    "exclude": [
+      "node_modules",
+      "**/__tests__",
+      "**/lib"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pigcan/babel-plugin-auto-completion.git"
+  },
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "auto-completion"
+  ],
+  "author": "pigcan <jinangjay818@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pigcan/babel-plugin-auto-completion/issues"
+  },
+  "homepage": "https://github.com/pigcan/babel-plugin-auto-completion#readme",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "coveralls": "^2.13.1",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "nyc": "^11.2.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  }
+}
